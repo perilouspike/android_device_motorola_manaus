@@ -1,0 +1,25 @@
+# Android fstab file.
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+#<dev>              <mnt_point>     <type>          <mnt_flags options>  
+
+# Logical Partitions (erofs)
+system              /system         erofs   ro      wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+system_ext          /system_ext     erofs   ro      wait,slotselect,avb=vbmeta_system,logical,first_stage_mount
+vendor              /vendor         erofs   ro      wait,slotselect,avb,logical,first_stage_mount
+product             /product        erofs   ro      wait,slotselect,avb,logical,first_stage_mount
+vendor_dlkm         /vendor_dlkm    erofs   ro      wait,slotselect,avb,logical,first_stage_mount
+
+# Logical Partitions (ext4)
+system              /system         ext4    ro      wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+
+# Userdata
+/dev/block/by-name/metadata     /metadata   ext4    noatime,nosuid,nodev,discard wait,check,formattable,first_stage_mount
+/dev/block/by-name/userdata     /data       f2fs    noatime,nosuid,nodev,discard,noflush_merge,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,inlinecrypt wait,check,formattable,quota,latemount,resize,reservedsize=128m,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized+wrappedkey_v0,metadata_encryption=aes-256-xts:wrappedkey_v0,keydirectory=/metadata/vold/metadata_encryption,sysfs_path=/sys/devices/platform/112b0000.ufshci,fsverity
+
+# Need to have this entry in here even though the mount point itself is no longer needed.
+# The update_engine code looks for this entry in order to determine the boot device address
+# and fails if it does not find it.
+
+/dev/block/by-name/misc         /misc       emmc    defaults defaults
