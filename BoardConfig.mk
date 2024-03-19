@@ -82,7 +82,7 @@ BOARD_DTB_OFFSET := 0x07c88000
 BOARD_HEADER_SIZE := 2128
 
 # Vendor_boot Command line
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 loglevel=4
+BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2 loglevel=4
 
 # Vendor_boot Img Args
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
