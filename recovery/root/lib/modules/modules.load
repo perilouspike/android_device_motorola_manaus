@@ -168,3 +168,13 @@ mtk-swpm-perf-arm-pmu.ko
 emi-mpu-v2.ko
 emi-slb.ko
 cache-parity.ko
+
+touchscreen_mmi.ko
+mmi_relay.ko
+sensors_class.ko
+focaltech_v3.ko
+goodix_brl_mmi.ko
+mmi_info.ko
+awinic_sar.ko
+sx937x_sar.ko
+goodix_mtk_fod.ko

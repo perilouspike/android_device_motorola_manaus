@@ -1015,3 +1015,26 @@ alias of:N*T*Cmediatek,mt6855-mdpm mtk_mdpm
 alias of:N*T*Cmediatek,mt6855-mdpmC* mtk_mdpm
 alias of:N*T*Cmediatek,mt6789-mdpm mtk_mdpm
 alias of:N*T*Cmediatek,mt6789-mdpmC* mtk_mdpm
+
+alias platform:mmi_relay mmi_relay
+alias of:N*T*Cmmi,sys-relay mmi_relay
+alias of:N*T*Cmmi,sys-relayC* mmi_relay
+
+alias of:N*T*Cfocaltech,fts focaltech_v3
+alias of:N*T*Cfocaltech,ftsC* focaltech_v3
+
+alias of:N*T*Cgoodix,gt9897 goodix_brl_mmi
+alias of:N*T*Cgoodix,gt9897C* goodix_brl_mmi
+alias of:N*T*Cgoodix,gt9966 goodix_brl_mmi
+alias of:N*T*Cgoodix,gt9966C* goodix_brl_mmi
+alias of:N*T*Cgoodix,gt9916 goodix_brl_mmi
+alias of:N*T*Cgoodix,gt9916C* goodix_brl_mmi
+alias i2c:goodix_ts goodix_brl_mmi
+alias platform:goodix_ts goodix_brl_mmi
+
+alias i2c:awinic_sar awinic_sar
+alias i2c:sx937x sx937x_sar
+
+alias spi:gf_spi goodix_mtk_fod
+alias of:N*T*Cgoodix,goodix-fp goodix_mtk_fod
+alias of:N*T*Cgoodix,goodix-fpC* goodix_mtk_fod

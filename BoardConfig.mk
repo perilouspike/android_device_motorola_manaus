@@ -126,7 +126,7 @@ TARGET_COPY_OUT_PRODUCT := product
 TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
 # Recovery
-TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_USES_VENDOR_DLKMIMAGE := true
@@ -146,6 +146,7 @@ BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
 BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
 TW_LOAD_VENDOR_BOOT_MODULES := true
+TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 
 # Metadata
 #BOARD_USES_METADATA_PARTITION := true
@@ -160,10 +161,24 @@ BOOT_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 # TWRP Configuration
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
-TW_SCREEN_BLANK_ON_BOOT := true
+#TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
-TW_HAS_NO_RECOVERY_PARTITION := true
+#TW_HAS_NO_RECOVERY_PARTITION := true
+TW_LOAD_VENDOR_MODULES := "touchscreen_mmi.ko \
+                           mmi_relay.ko \
+                           sensors_class.ko \
+                           focaltech_v3.ko \
+                           goodix_brl_mmi.ko \
+                           mmi_info.ko \
+                           awinic_sar.ko \
+                           sx937x_sar.ko \
+                           goodix_mtk_fod.ko \
+                           tm_goodix_firmware.bin \
+                           boe_goodix_firmware.bin \
+                           tm_goodix_cfg_group.bin \
+                           focaltech_ts_fw_csot.bin \
+                           boe_goodix_cfg_group.bin"
 
 # Set brightness path and level
 TW_DEFAULT_BRIGHTNESS := 400
@@ -182,6 +197,7 @@ TW_EXCLUDE_TWRPAPP := true
 # Debug-tools
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
+TWRP_EVENT_LOGGING := true
 
 # Crypto
 #TW_INCLUDE_CRYPTO := true
