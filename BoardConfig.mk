@@ -165,6 +165,7 @@ TW_EXTRA_LANGUAGES := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
 #TW_HAS_NO_RECOVERY_PARTITION := true
+TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_LOAD_VENDOR_MODULES := "touchscreen_mmi.ko \
                            mmi_relay.ko \
                            sensors_class.ko \
@@ -197,7 +198,7 @@ TW_EXCLUDE_TWRPAPP := true
 # Debug-tools
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
-TWRP_EVENT_LOGGING := true
+#TWRP_EVENT_LOGGING := true
 
 # Crypto
 #TW_INCLUDE_CRYPTO := true
