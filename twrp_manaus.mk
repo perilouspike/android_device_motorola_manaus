@@ -25,6 +25,9 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # Inherit from manaus device
 $(call inherit-product, device/motorola/manaus/device.mk)
 
+# Configure launch_with_vendor_ramdisk.mk
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
+
 PRODUCT_DEVICE := manaus
 PRODUCT_NAME := twrp_manaus
 PRODUCT_BRAND := motorola

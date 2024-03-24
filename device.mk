@@ -22,8 +22,14 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # A/B
 AB_OTA_UPDATER := true
+
+# A/B updater updatable partitions list. Keep in sync with the partition list
+# with "_a" and "_b" variants in the device. Note that the vendor can add more
+# more partitions to this list for the bootloader and radio.
 AB_OTA_PARTITIONS += \
     boot \
+    dtbo \
+    dtbo \
     system \
     system_ext \
     vendor \
@@ -34,9 +40,13 @@ AB_OTA_PARTITIONS += \
     vbmeta_vendor \
     vendor_boot
 
+# tell update_engine to not change dynamic partition table during updates
+# needed since our qti_dynamic_partitions does not include
+# vendor and odm and we also dont want to AB update them
+TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
+
 # Virtual A/B
 ENABLE_VIRTUAL_AB := true
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -55,11 +65,20 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-service \
     android.hardware.boot@1.2-mtkimpl \
-    android.hardware.boot@1.2-mtkimpl.recovery \
-    bootctrl.mt6879 \
+    android.hardware.boot@1.2-mtkimpl.recovery
+
+PRODUCT_PACKAGES += \
+    bootctrl \
+    bootctrl.recovery \
     bootctrl.mt6879.recovery
 
-#PRODUCT_PACKAGES := \
+# Health HAL
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-service    
+
+PRODUCT_PACKAGES := \
+    bootctrl.mt6879 \
     libgptutils \
     libz \
     libcutils
@@ -85,3 +104,7 @@ TARGET_RECOVERY_DEVICE_MODULES += \
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so
+
+RECOVERY_LIBRARY_SOURCE_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so    
