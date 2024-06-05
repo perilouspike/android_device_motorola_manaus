@@ -82,7 +82,7 @@ BOARD_DTB_OFFSET := 0x07c88000
 BOARD_HEADER_SIZE := 2128
 
 # Vendor_boot Command line
-BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2
+BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2 loglevel=4
 
 # Vendor_boot Img Args
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
@@ -208,4 +208,4 @@ TW_INCLUDE_CRYPTO_FBE := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 
 # Maintainer/Version
-TW_DEVICE_VERSION := perilouspike/beta-1
+TW_DEVICE_VERSION := perilouspike/beta-1.1
